@@ -20,9 +20,4 @@ for (let i = 0; i < skills.length; i++) {
     let skill = document.createElement("li");
     skill.innerHTML = `${skills[i]}`;
     skillsList.appendChild(skill);
-
-
-    // const para = document.createElement("p");
-    // para.innerText = "This is a paragraph";
-    // document.body.appendChild(para);
 }
