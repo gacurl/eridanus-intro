@@ -6,7 +6,7 @@ let today = new Date();
 let thisYear = today.getFullYear();
 let copyright = document.createElement("p");
 
-copyright.innerHTML = `${fullName} ${thisYear} &copy`;
+copyright.innerHTML = ` &copy ${fullName} ${thisYear}`;
 footer.appendChild(copyright)
 
 // Skills section
