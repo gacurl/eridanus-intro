@@ -30,28 +30,28 @@ document.addEventListener("submit", function(event) {
     const name = event.target.name.value.trim();
     const email = event.target.email.value.trim();
     const message = event.target.message.value;
-    // not certain reset is clean, but it worked through testing
-    // need test strategy for resetting a nodelist
 
     //Start message display
-    const messageSection = document.getElementById("messages")
-    const messageList = messageSection.querySelector("ul")
+    const messageSection = document.getElementById("messages");
+    const messageList = messageSection.querySelector("ul");
     const newMessage = document.createElement("li");
-    const removeButton = document.createElement("button")
-
     newMessage.innerHTML = `<a href="mailto:${email}"> ${name}</a> wrote: <span>${message}</span>  `;
-    removeButton.innerHTML = `remove`;
-    // Remove message display button
-    document.addEventListener("click", function(event) {
-        const entry = newMessage //may need to specify only newMessage vs the entire list
+
+    // Remove button (to remove message display)
+    const removeButton = document.createElement("button")
+    removeButton.innerHTML = "remove"; 
+    
+    removeButton.addEventListener("click", function(event) {
+        // trying with entry variable
+        const entry = event.target.parentElement;
         entry.remove();
-        // I think the parentNode is #messages
+        // below works also - streamlined code?
+        // newMessage.remove();
     });
-    // console.log("Entry outside the click event" + entry);
+
+    //functionality to add the removeButton, newMessage, and reset the form
     newMessage.appendChild(removeButton);
     messageList.appendChild(newMessage);
-    // console.log(removeButton)
     messageForm[0].reset();
 });
-
-// End Messages
+    // End Messages
