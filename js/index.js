@@ -69,7 +69,7 @@ document.addEventListener("submit", function(event) {
 
 // Fetch GH repos
 let githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", "https://api.github.com/users/gacurl/repos");
+githubRequest.open("GET", 'https://api.github.com/users/gacurl/repos');
 githubRequest.onload = (event) => {
     let repositories = JSON.parse(githubRequest.responseText);
     renderProjectList(repositories);
@@ -88,14 +88,20 @@ function renderProjectList(repositories) {
     }
 };
 
-fetch('https://api.giphy.com/v1/gifs/translate?api_key=YOUR_KEY_HERE&s=cats', {
+fetch('https://api.github.com/users/gacurl/repos', {
     mode: 'cors'
 })
 .then(function (response) {
     return response.json();
 })
 .then(function (response) {
-    console.log(response);
+    // console.log("this response is from fetch block: " + response[0].name);
+    for (let i = 0; i < response.length; i++) {
+        // console.log(repositories[i].name)
+        let project = document.createElement("li");
+        project.innerText = response[i].name;
+        projectList.appendChild(project)
+    }
 });
 // End Fetch GH repos
 
