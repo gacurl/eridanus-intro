@@ -68,25 +68,26 @@ document.addEventListener("submit", function(event) {
 // End Messages
 
 // Fetch GH repos
-let githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", 'https://api.github.com/users/gacurl/repos');
-githubRequest.onload = (event) => {
-    let repositories = JSON.parse(githubRequest.responseText);
-    renderProjectList(repositories);
-};
-githubRequest.send();
 
 const projectSection = document.getElementById("projects");
 let projectList = projectSection.querySelector("ul");
 
-function renderProjectList(repositories) {
-    for (let i = 0; i < repositories.length; i++) {
-        // console.log(repositories[i].name)
-        let project = document.createElement("li");
-        project.innerText = repositories[i].name;
-        projectList.appendChild(project)
-    }
-};
+// let githubRequest = new XMLHttpRequest();
+// githubRequest.open("GET", 'https://api.github.com/users/gacurl/repos');
+// githubRequest.onload = (event) => {
+//     let repositories = JSON.parse(githubRequest.responseText);
+//     renderProjectList(repositories);
+// };
+// githubRequest.send();
+
+// function renderProjectList(repositories) {
+//     for (let i = 0; i < repositories.length; i++) {
+//         // console.log(repositories[i].name)
+//         let project = document.createElement("li");
+//         project.innerText = repositories[i].name;
+//         projectList.appendChild(project)
+//     }
+// };
 
 fetch('https://api.github.com/users/gacurl/repos', {
     mode: 'cors'
