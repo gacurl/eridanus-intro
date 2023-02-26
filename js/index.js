@@ -65,24 +65,7 @@ document.addEventListener("submit", function(event) {
     messageList.appendChild(newMessage);
     messageForm[0].reset();
 });
-    // End Messages
-
-// Footer
-const fullName = "Greg Curl";
-const footer = document.querySelector("footer");
-
-let today = new Date();
-let thisYear = today.getFullYear();
-let copyright = document.createElement("p");
-let image = document.createElement("img");
-image.src = "img/logo_v2.svg"
-
-copyright.innerText = `\u00A9 ${fullName} ${thisYear}`
-// console.log("copyright is: " + copyright);
-// console.log(image.src)
-// footer.appendChild(image)
-// footer.appendChild(copyright)
-// end Footer
+// End Messages
 
 // Fetch GH repos
 let githubRequest = new XMLHttpRequest();
@@ -104,4 +87,21 @@ function renderProjectList(repositories) {
         projectList.appendChild(project)
     }
 };
+// End Fetch GH repos
 
+// Footer
+const fullName = "Greg Curl";
+const footer = document.querySelector("footer");
+
+let today = new Date();
+let thisYear = today.getFullYear();
+let copyright = document.createElement("p");
+let image = document.createElement("img");
+image.src = "img/logo_v2.svg"
+
+copyright.innerText = `\u00A9 ${fullName} ${thisYear}`
+// console.log("copyright is: " + copyright);
+// console.log(image.src)
+// footer.appendChild(image)
+// footer.appendChild(copyright)
+// end Footer
