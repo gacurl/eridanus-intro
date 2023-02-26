@@ -72,23 +72,6 @@ document.addEventListener("submit", function(event) {
 const projectSection = document.getElementById("projects");
 let projectList = projectSection.querySelector("ul");
 
-// let githubRequest = new XMLHttpRequest();
-// githubRequest.open("GET", 'https://api.github.com/users/gacurl/repos');
-// githubRequest.onload = (event) => {
-//     let repositories = JSON.parse(githubRequest.responseText);
-//     renderProjectList(repositories);
-// };
-// githubRequest.send();
-
-// function renderProjectList(repositories) {
-//     for (let i = 0; i < repositories.length; i++) {
-//         // console.log(repositories[i].name)
-//         let project = document.createElement("li");
-//         project.innerText = repositories[i].name;
-//         projectList.appendChild(project)
-//     }
-// };
-
 fetch('https://api.github.com/users/gacurl/repos', {
     mode: 'cors'
 })
@@ -107,18 +90,45 @@ fetch('https://api.github.com/users/gacurl/repos', {
 // End Fetch GH repos
 
 // Footer
-const fullName = "Greg Curl";
-const footer = document.querySelector("footer");
+const renderFooter = () => {
+    const fullName = "Greg Curl";
+    const footer = document.querySelector("footer");
+    // generate year for copyright
+    let today = new Date();
+    let thisYear = today.getFullYear();
+    // create DOM elements
+    const footerDiv = document.createElement("div");
+    let copyright = document.createElement("p");
+    let image = document.createElement("img");
+    // image source
+    image.src = "img/logo_v2.svg"
 
-let today = new Date();
-let thisYear = today.getFullYear();
-let copyright = document.createElement("p");
-let image = document.createElement("img");
-image.src = "img/logo_v2.svg"
+    footerDiv.classList.add('footerDiv');
+    copyright.innerText = `\u00A9 ${fullName} ${thisYear}`;
+    footer.appendChild(footerDiv).appendChild(image);
+    footer.appendChild(footerDiv).appendChild(copyright);
+};
 
-copyright.innerText = `\u00A9 ${fullName} ${thisYear}`
+renderFooter();
+// End footer
+
+
+
+
+
+
+
+
 // console.log("copyright is: " + copyright);
 // console.log(image.src)
 // footer.appendChild(image)
 // footer.appendChild(copyright)
 // end Footer
+//   const renderCopyright = () => {
+
+//       // DOM selection
+//       const copyright = document.querySelector('#copyright')
+
+//       // DOM manipulation (modify)
+//       copyright.innerHTML = `&copy; Elliot Thompson ${thisYear}`
+//   }
