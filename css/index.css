@@ -277,13 +277,18 @@ h2 {
 
 /* footer */
 
-.footer {
+.footerDiv {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    border-top: 5px solid;
+    border-image: linear-gradient(to right, var(--bright-red), var(--dark-red)) 1 0;
+    background-color: var(--blue-gray);
+    color: var(--main-font);
+    
 }
 
-.footer img {
+.footerDiv img {
     padding-right: 50px;
 }
 

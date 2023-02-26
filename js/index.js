@@ -97,15 +97,16 @@ const renderFooter = () => {
     let today = new Date();
     let thisYear = today.getFullYear();
     // create DOM elements
+    const footerDiv = document.createElement("div");
     let copyright = document.createElement("p");
-    console.log(copyright)
     let image = document.createElement("img");
     // image source
     image.src = "img/logo_v2.svg"
 
-    copyright.innerText = `\u00A9 ${fullName} ${thisYear}`
-    footer.appendChild(image);
-    footer.appendChild(copyright);
+    footerDiv.classList.add('footerDiv');
+    copyright.innerText = `\u00A9 ${fullName} ${thisYear}`;
+    footer.appendChild(footerDiv).appendChild(image);
+    footer.appendChild(footerDiv).appendChild(copyright);
 };
 
 renderFooter();
