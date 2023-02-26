@@ -185,6 +185,7 @@ h2 {
 #message {
     margin: 25px 50px 25px;
 }
+
 /* experience section */
 .experience li {
     list-style-type: none;
@@ -196,8 +197,26 @@ h2 {
     color: var(--dark-red)
 }
 
-/* skills section */
+/* projects section */
+.projects {
+    columns: 2;
+}
+.projects li {
+    list-style-type: none;
+    border: 2px solid var(--blue-gray);
+    text-align: justify;
+    border-radius: 50px;
+    transition: .5s ease all;
+    text-decoration: none;
+    text-align: center;
+}
 
+.projects li:hover {
+    background-color: var(--dark-red);
+    color: var(--gold);
+    font-weight: bold;
+}
+/* skills section */
 #skills li {
     list-style-type: none;
     padding: 2px;
