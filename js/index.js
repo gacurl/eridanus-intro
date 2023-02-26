@@ -65,7 +65,46 @@ document.addEventListener("submit", function(event) {
     messageList.appendChild(newMessage);
     messageForm[0].reset();
 });
-    // End Messages
+// End Messages
+
+// Fetch GH repos
+
+const projectSection = document.getElementById("projects");
+let projectList = projectSection.querySelector("ul");
+
+// let githubRequest = new XMLHttpRequest();
+// githubRequest.open("GET", 'https://api.github.com/users/gacurl/repos');
+// githubRequest.onload = (event) => {
+//     let repositories = JSON.parse(githubRequest.responseText);
+//     renderProjectList(repositories);
+// };
+// githubRequest.send();
+
+// function renderProjectList(repositories) {
+//     for (let i = 0; i < repositories.length; i++) {
+//         // console.log(repositories[i].name)
+//         let project = document.createElement("li");
+//         project.innerText = repositories[i].name;
+//         projectList.appendChild(project)
+//     }
+// };
+
+fetch('https://api.github.com/users/gacurl/repos', {
+    mode: 'cors'
+})
+.then(function (response) {
+    return response.json();
+})
+.then(function (response) {
+    // console.log("this response is from fetch block: " + response[0].name);
+    for (let i = 0; i < response.length; i++) {
+        // console.log(repositories[i].name)
+        let project = document.createElement("li");
+        project.innerText = response[i].name;
+        projectList.appendChild(project)
+    }
+});
+// End Fetch GH repos
 
 // Footer
 const fullName = "Greg Curl";
@@ -83,25 +122,3 @@ copyright.innerText = `\u00A9 ${fullName} ${thisYear}`
 // footer.appendChild(image)
 // footer.appendChild(copyright)
 // end Footer
-
-// Fetch GH repos
-let githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", "https://api.github.com/users/gacurl/repos");
-githubRequest.onload = (event) => {
-    let repositories = JSON.parse(githubRequest.responseText);
-    renderProjectList(repositories);
-};
-githubRequest.send();
-
-const projectSection = document.getElementById("projects");
-let projectList = projectSection.querySelector("ul");
-
-function renderProjectList(repositories) {
-    for (let i = 0; i < repositories.length; i++) {
-        // console.log(repositories[i].name)
-        let project = document.createElement("li");
-        project.innerText = repositories[i].name;
-        projectList.appendChild(project)
-    }
-};
-
